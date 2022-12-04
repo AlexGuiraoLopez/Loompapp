@@ -6,5 +6,5 @@ data class FavoriteModel(
     @SerializedName("color") val color: String,
     @SerializedName("food") val food: String,
     @SerializedName("song") val song: String,
-    //ToDo: No cojo el random string porque es información innecesaria.
+    //ToDo: Ask if "random_string" is mandatory or its a trap!
 )

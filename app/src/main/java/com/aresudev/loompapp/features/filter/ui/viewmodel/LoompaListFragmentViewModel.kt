@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class FilterFragmentViewModel @Inject constructor(private val getAllLoompasUseCase: GetAllLoompasUseCase) : ViewModel() {
+class LoompaListFragmentViewModel @Inject constructor(private val getAllLoompasUseCase: GetAllLoompasUseCase) : ViewModel() {
 
     companion object {
         private const val INITIAL_PAGE = 1

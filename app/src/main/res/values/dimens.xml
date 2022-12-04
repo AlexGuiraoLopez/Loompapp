@@ -3,7 +3,8 @@
     <dimen name="small_icon">20dp</dimen>
 
     <!--Dimensiones de las imágenes-->
-    <dimen name="min_image">30dp</dimen>
+    <dimen name="smallest_image">20dp</dimen>
+    <dimen name="mini_image">30dp</dimen>
     <dimen name="tinny_image">40dp</dimen>
     <dimen name="small_image">60dp</dimen>
     <dimen name="medium_image">150dp</dimen>
