@@ -3,10 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AVProjects/AndroidStudio/Loompaap/app/src/main/res/drawable-v24/ic_filter_blur_image.xml" value="0.2505" />
         <entry key="..\:/AVProjects/AndroidStudio/Loompaap/app/src/main/res/font/amiko.xml" value="0.4109375" />
         <entry key="..\:/AVProjects/AndroidStudio/Loompaap/app/src/main/res/font/montserrat_alternates.xml" value="0.4109375" />
         <entry key="..\:/AVProjects/AndroidStudio/Loompaap/app/src/main/res/layout/custom_view_alert_dialog.xml" value="0.3807291666666667" />
         <entry key="..\:/AVProjects/AndroidStudio/Loompaap/app/src/main/res/layout/custom_view_alert_dialog_button.xml" value="0.3807291666666667" />
+        <entry key="..\:/AVProjects/AndroidStudio/Loompaap/app/src/main/res/layout/fragment_loompa_info.xml" value="0.3807291666666667" />
+        <entry key="..\:/AVProjects/AndroidStudio/Loompaap/app/src/main/res/layout/fragment_loompa_list.xml" value="0.3796875" />
+        <entry key="..\:/AVProjects/AndroidStudio/Loompaap/app/src/main/res/layout/item_loompa_card.xml" value="0.3807291666666667" />
       </map>
     </option>
   </component>
