@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
-@InstallIn(SingletonComponent::class) //Alcance de la instancia.
+@InstallIn(SingletonComponent::class)
 object NetworkModule {
 
     private const val CONNECTION_TIMEOUT: Long = 5
@@ -37,7 +37,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideProductApiClient(retrofit: Retrofit): LoompaApi {
+    fun provideLoompaApiClient(retrofit: Retrofit): LoompaApi {
         return retrofit.create(LoompaApi::class.java)
     }
 }

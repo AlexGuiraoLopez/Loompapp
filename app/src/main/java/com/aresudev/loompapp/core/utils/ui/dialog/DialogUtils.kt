@@ -2,7 +2,7 @@ package com.aresudev.loompapp.core.utils.ui.dialog
 
 import android.content.Context
 import com.aresudev.loompapp.R
-import com.aresudev.loompapp.commons.business.ui.customview.AlertDialogCustomView
+import com.aresudev.loompapp.commons.ui.customview.AlertDialogCustomView
 import com.aresudev.loompapp.core.extensions.getAppString
 
 object DialogUtils {

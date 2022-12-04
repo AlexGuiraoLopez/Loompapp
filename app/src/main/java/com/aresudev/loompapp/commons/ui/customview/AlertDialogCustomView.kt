@@ -1,4 +1,4 @@
-package com.aresudev.loompapp.commons.business.ui.customview
+package com.aresudev.loompapp.commons.ui.customview
 
 import android.app.Dialog
 import android.content.Context

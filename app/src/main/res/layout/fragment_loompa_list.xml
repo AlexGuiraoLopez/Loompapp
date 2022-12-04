@@ -83,7 +83,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Next page"
+            android:text="@string/next_page"
             android:layout_marginEnd="@dimen/small_padding"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

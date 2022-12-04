@@ -1,6 +1,7 @@
 package com.aresudev.loompapp.commons.data.repository
 
 import com.aresudev.loompapp.commons.data.model.LoompaModel
+import com.aresudev.loompapp.commons.data.model.LoompaPageModel
 import com.aresudev.loompapp.commons.data.provider.AllLoompaProvider
 import com.aresudev.loompapp.commons.network.LoompaService
 import javax.inject.Inject
@@ -12,7 +13,7 @@ class LoompaRepository @Inject constructor(
     private val allLoompaProvider: AllLoompaProvider
 ) {
 
-    suspend fun getAllLoompas(): List<LoompaModel> =
+    suspend fun getAllLoompas(): LoompaPageModel =
         if (allLoompaProvider.hasData()) {
             allLoompaProvider.getData()
         } else {
@@ -21,7 +22,7 @@ class LoompaRepository @Inject constructor(
             response
         }
 
-    suspend fun getAllLoompas(page: Int): List<LoompaModel> = loompaService.getLoompas(page)
+    suspend fun getAllLoompas(page: Int): LoompaPageModel = loompaService.getLoompas(page)
 
     suspend fun getLoompaById(loompaId: Int): LoompaModel = loompaService.getLoompaById(loompaId)
 
