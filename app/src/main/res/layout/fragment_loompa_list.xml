@@ -75,15 +75,26 @@
             tools:text="Page: 1"
             android:layout_marginStart="@dimen/small_padding"/>
 
-        <TextView
-            android:id="@+id/tvNextPage"
-            style="@style/tv_h5"
+        <ImageView
+            android:id="@+id/ivPreviousPage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_left"
+            android:text="@string/next_page"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ivNextPage"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginEnd="@dimen/small_padding"/>
+
+        <ImageView
+            android:id="@+id/ivNextPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_right"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Next page"
+            android:text="@string/next_page"
             android:layout_marginEnd="@dimen/small_padding"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

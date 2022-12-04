@@ -1,6 +1,11 @@
 <resources>
-    <string name="app_name">Loompaap</string>
+    <string name="app_name">Loompapp</string>
 
     <string name="accept">Accept</string>
     <string name="cancel">Cancel</string>
+    <string name="next_page">Next page</string>
+    <string name="page">Page</string>
+    <string name="last_page_warning">No more pages to show.</string>
+    <string name="first_page_warning">You are already in first page.</string>
+
 </resources>
