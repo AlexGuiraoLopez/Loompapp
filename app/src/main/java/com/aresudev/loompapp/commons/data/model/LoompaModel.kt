@@ -10,8 +10,10 @@ data class LoompaModel(
     @SerializedName("gender") val gender: String,
     @SerializedName("image") val image: String,
     @SerializedName("profession") val profession: String,
+    @SerializedName("description") val description: String,
     @SerializedName("email") val email: String,
     @SerializedName("age") val age: String,
     @SerializedName("country") val country: String,
     @SerializedName("height") val height: String,
+    @SerializedName("quota") val quota: String,
 )

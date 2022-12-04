@@ -17,9 +17,9 @@
 
         <ImageView
             android:id="@+id/ivBackArrow"
-            android:layout_width="@dimen/tinny_image"
-            android:layout_height="@dimen/tinny_image"
-            android:layout_marginStart="@dimen/small_padding"
+            android:layout_width="@dimen/mini_image"
+            android:layout_height="@dimen/mini_image"
+            android:layout_marginStart="@dimen/tinny_padding"
             android:layout_marginTop="@dimen/small_padding"
             android:src="@drawable/ic_back_arrow"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +30,7 @@
             android:layout_width="@dimen/medium_image"
             android:layout_height="@dimen/medium_image"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageView"
+            app:layout_constraintEnd_toStartOf="@+id/ivFavoriteStar"
             app:layout_constraintStart_toEndOf="@+id/ivBackArrow"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -38,15 +38,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+
                 <ImageView
+                    android:id="@+id/ivMainImage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitXY"
-                    android:src="@drawable/test_loompa"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/test_loompa" />
 
                 <ImageView
                     android:id="@+id/ivBlur"
@@ -58,6 +60,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
 
                 <TextView
                     android:id="@+id/tvLoompaName"
@@ -75,17 +78,108 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     tools:text="Loompa Fernandez" />
+
+                <!--Color-->
+                <ImageView
+                    android:id="@+id/ivColorIcon"
+                    android:layout_width="@dimen/smallest_image"
+                    android:layout_height="@dimen/smallest_image"
+                    android:layout_marginStart="@dimen/small_padding"
+                    android:layout_marginTop="@dimen/small_padding"
+                    android:src="@drawable/ic_color"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/tvFavoriteColor"
+                    style="@style/tv_h5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/tinny_padding"
+                    android:layout_marginEnd="@dimen/tinny_padding"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivColorIcon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ivColorIcon"
+                    app:layout_constraintTop_toTopOf="@+id/ivColorIcon"
+                    tools:text="Red"
+                    tools:visibility="visible" />
+
+                <!--Food-->
+                <ImageView
+                    android:id="@+id/ivFoodIcon"
+                    android:layout_width="@dimen/smallest_image"
+                    android:layout_height="@dimen/smallest_image"
+                    android:layout_marginStart="@dimen/small_padding"
+                    android:layout_marginTop="@dimen/tinny_padding"
+                    android:src="@drawable/ic_food"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivColorIcon"
+                    tools:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/tvFavoriteFood"
+                    style="@style/tv_h5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/tinny_padding"
+                    android:layout_marginEnd="@dimen/tinny_padding"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivFoodIcon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ivFoodIcon"
+                    app:layout_constraintTop_toTopOf="@+id/ivFoodIcon"
+                    tools:text="Tiramisú"
+                    tools:visibility="visible" />
+
+                <!--Song-->
+                <ImageView
+                    android:id="@+id/ivSongIcon"
+                    android:layout_width="@dimen/smallest_image"
+                    android:layout_height="@dimen/smallest_image"
+                    android:layout_marginStart="@dimen/small_padding"
+                    android:layout_marginTop="@dimen/tinny_padding"
+                    android:src="@drawable/ic_song"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivFoodIcon"
+                    tools:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/tvFavoriteSong"
+                    style="@style/tv_h5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/tinny_padding"
+                    android:layout_marginEnd="@dimen/tinny_padding"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivSongIcon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ivSongIcon"
+                    app:layout_constraintTop_toTopOf="@+id/ivSongIcon"
+                    tools:text="Lalalalala"
+                    tools:visibility="visible" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         </com.google.android.material.card.MaterialCardView>
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/ivFavoriteStar"
             android:layout_width="@dimen/tinny_image"
             android:layout_height="@dimen/tinny_image"
             android:layout_marginTop="@dimen/small_padding"
-            android:layout_marginEnd="@dimen/small_padding"
+            android:layout_marginEnd="@dimen/tinny_padding"
             android:src="@drawable/ic_star"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -107,6 +201,8 @@
             style="@style/tv_h5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -114,11 +210,13 @@
 
         <TextView
             android:id="@+id/tvCountry"
-            style="@style/tv_h5"
+            style="@style/tv_h6"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/medium_padding"
+            android:layout_marginStart="@dimen/small_padding"
             android:layout_marginTop="@dimen/tinny_padding"
+            android:ellipsize="end"
+            android:maxLines="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvProfession"
             app:layout_constraintWidth_percent=".3"
@@ -126,10 +224,12 @@
 
         <TextView
             android:id="@+id/tvAge"
-            style="@style/tv_h5"
+            style="@style/tv_h6"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/tinny_padding"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:textAlignment="center"
             app:layout_constraintEnd_toStartOf="@+id/tvGender"
             app:layout_constraintStart_toEndOf="@+id/tvCountry"
@@ -138,11 +238,13 @@
 
         <TextView
             android:id="@+id/tvGender"
-            style="@style/tv_h5"
+            style="@style/tv_h6"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/tinny_padding"
-            android:layout_marginEnd="@dimen/medium_padding"
+            android:layout_marginEnd="@dimen/small_padding"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:textAlignment="textEnd"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvProfession"

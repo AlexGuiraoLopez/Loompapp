@@ -1,13 +1,13 @@
 package com.aresudev.loompapp.commons.ui.view
 
-import android.app.Activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.aresudev.loompapp.R
 import com.aresudev.loompapp.databinding.ActivityMainBinding
 import com.aresudev.loompapp.commons.callbacks.FragmentNavigator
 import com.aresudev.loompapp.core.extensions.changeCurrentFragment
-import com.aresudev.loompapp.features.filter.ui.view.FilterFragment
+import com.aresudev.loompapp.features.filter.ui.view.DetailFragment
+import com.aresudev.loompapp.features.filter.ui.view.LoompaListFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity(), FragmentNavigator {
 
     private lateinit var viewBinding: ActivityMainBinding
 
+    private lateinit var fLoompaList: LoompaListFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,14 +25,18 @@ class MainActivity : AppCompatActivity(), FragmentNavigator {
     }
 
     private fun initFragment() {
-        supportFragmentManager.changeCurrentFragment(R.id.fcvMainFragmentContainer, FilterFragment())
+        fLoompaList = LoompaListFragment()
+        fLoompaList.navigator = this
+        supportFragmentManager.changeCurrentFragment(R.id.fcvMainFragmentContainer, fLoompaList)
     }
 
     override fun navigateToFilterFragment() {
-        TODO("Not yet implemented")
+        supportFragmentManager.changeCurrentFragment(R.id.fcvMainFragmentContainer, fLoompaList)
     }
 
     override fun navigateToDetailFragment(loompaId: Int) {
-        TODO("Not yet implemented")
+        val fDetail = DetailFragment(loompaId)
+        fDetail.navigator = this
+        supportFragmentManager.changeCurrentFragment(R.id.fcvMainFragmentContainer, fDetail)
     }
 }

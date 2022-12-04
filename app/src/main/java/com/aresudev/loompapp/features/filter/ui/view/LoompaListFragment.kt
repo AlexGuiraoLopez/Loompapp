@@ -7,17 +7,19 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aresudev.loompapp.R
+import com.aresudev.loompapp.commons.callbacks.FragmentNavigator
+import com.aresudev.loompapp.commons.data.model.LoompaModel
 import com.aresudev.loompapp.databinding.FragmentLoompaListBinding
 import com.aresudev.loompapp.commons.ui.base.BaseFragment
 import com.aresudev.loompapp.core.extensions.showToast
 import com.aresudev.loompapp.core.utils.ui.Space
 import com.aresudev.loompapp.features.filter.ui.adapter.LoompaRvAdapter
-import com.aresudev.loompapp.features.filter.ui.viewmodel.FilterFragmentViewModel
+import com.aresudev.loompapp.features.filter.ui.viewmodel.LoompaListFragmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class FilterFragment : BaseFragment() {
+class LoompaListFragment : BaseFragment() {
 
     companion object {
         private const val RV_ITEM_SEPARATION = 10
@@ -26,10 +28,12 @@ class FilterFragment : BaseFragment() {
     private var _viewBinding: FragmentLoompaListBinding? = null
     private val viewBinding get() = _viewBinding!!
 
-    private val viewModel: FilterFragmentViewModel by activityViewModels()
+    private val viewModel: LoompaListFragmentViewModel by activityViewModels()
 
     @Inject
     lateinit var loompaAdapter: LoompaRvAdapter
+
+    lateinit var navigator: FragmentNavigator
 
     override fun initViewModel() {
         viewModel.loadScreen()
@@ -61,6 +65,11 @@ class FilterFragment : BaseFragment() {
             rvLoompaList.adapter = loompaAdapter
             rvLoompaList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             rvLoompaList.addItemDecoration(Space(RV_ITEM_SEPARATION))
+            loompaAdapter.setOnLoompaClickListener(object : LoompaRvAdapter.LoompaItemClickListener{
+                override fun onLoompaClick(loompa: LoompaModel) {
+                    navigator.navigateToDetailFragment(loompa.id)
+                }
+            })
         }
     }
 
@@ -79,5 +88,10 @@ class FilterFragment : BaseFragment() {
         with(viewBinding) {
             tvPageNumber.text = getString(R.string.page) + ": " + pageNumber.toString()
         }
+    }
+
+    override fun onDetach() {
+        _viewBinding = null
+        super.onDetach()
     }
 }

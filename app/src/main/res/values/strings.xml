@@ -7,5 +7,9 @@
     <string name="page">Page</string>
     <string name="last_page_warning">No more pages to show.</string>
     <string name="first_page_warning">You are already in first page.</string>
+    <string name="loompa_think">%s thinks:</string>
+    <string name="male_gender">Male</string>
+    <string name="female_gender">Female</string>
+    <string name="non_defined_gender">Non defined</string>
 
 </resources>
