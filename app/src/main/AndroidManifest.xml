@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.aresudev.loompaap">
+    package="com.aresudev.loompapp">
 
     <application
         android:allowBackup="true"
-        android:name=".LoompApp"
+        android:name="com.aresudev.loompapp.LoompApp"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -17,7 +17,7 @@
         android:usesCleartextTraffic="true">
 
     <activity
-        android:name="com.aresudev.loompaap.commons.business.ui.view.MainActivity"
+        android:name="com.aresudev.loompapp.commons.business.ui.view.MainActivity"
         android:exported="true"
         android:screenOrientation="portrait" >
         <intent-filter>
