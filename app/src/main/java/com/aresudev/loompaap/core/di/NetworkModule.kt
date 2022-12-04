@@ -17,6 +17,8 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class) //Alcance de la instancia.
 object NetworkModule {
 
+    private const val CONNECTION_TIMEOUT: Long = 5
+
     @Singleton
     @Provides
     fun provideRetrofit(): Retrofit{
@@ -24,7 +26,7 @@ object NetworkModule {
         logging.level = HttpLoggingInterceptor.Level.BODY
 
         val httpClient = OkHttpClient.Builder().addInterceptor(logging)
-            .connectTimeout(5, TimeUnit.SECONDS)
+            .connectTimeout(CONNECTION_TIMEOUT, TimeUnit.SECONDS)
             .build()
         return Retrofit.Builder()
             .baseUrl(BuildConfig.API_URL)
