@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.aresudev.loompapp.R
 import com.aresudev.loompapp.databinding.FragmentLoompaListBinding
 import com.aresudev.loompapp.commons.ui.base.BaseFragment
+import com.aresudev.loompapp.core.extensions.showToast
 import com.aresudev.loompapp.core.utils.ui.Space
 import com.aresudev.loompapp.features.filter.ui.adapter.LoompaRvAdapter
 import com.aresudev.loompapp.features.filter.ui.viewmodel.FilterFragmentViewModel
@@ -38,6 +39,7 @@ class FilterFragment : BaseFragment() {
         with(viewModel) {
             loompaList.observe(viewLifecycleOwner) { loompaList -> loompaAdapter.setCollection(loompaList) }
             currentPage.observe(viewLifecycleOwner) { setPageNumber(it); loadScreen() }
+            errorMessage.observe(viewLifecycleOwner) { errorMessage -> requireActivity().showToast(errorMessage) }
         }
     }
 
@@ -64,8 +66,11 @@ class FilterFragment : BaseFragment() {
 
     private fun initEvents() {
         with(viewBinding) {
-            tvNextPage.setOnClickListener {
+            ivNextPage.setOnClickListener {
                 viewModel.nextPage()
+            }
+            ivPreviousPage.setOnClickListener {
+                viewModel.previousPage()
             }
         }
     }
@@ -75,5 +80,4 @@ class FilterFragment : BaseFragment() {
             tvPageNumber.text = getString(R.string.page) + ": " + pageNumber.toString()
         }
     }
-
 }
