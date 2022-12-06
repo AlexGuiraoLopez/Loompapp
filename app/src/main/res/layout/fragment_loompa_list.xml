@@ -19,19 +19,29 @@
 
         <Spinner
             android:id="@+id/spnFilterProfession"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:layout_width="170dp"
+            android:layout_height="30dp"
+            android:background="@drawable/spn_container"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/spnFilterGender"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="@dimen/small_padding"
+            android:alpha="0.5"/>
 
         <Spinner
             android:id="@+id/spnFilterGender"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:layout_width="170dp"
+            android:layout_height="30dp"
+            android:background="@drawable/spn_container"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/spnFilterProfession"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginEnd="@dimen/small_padding"
+            android:alpha="0.5"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -39,6 +49,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/vSeparatorTop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
         tools:listitem="@layout/item_loompa_card"
         android:layout_marginStart="@dimen/small_padding"

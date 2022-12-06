@@ -24,6 +24,10 @@ class LoompaListFragmentViewModel @Inject constructor(private val getAllLoompasU
 
     private val _loompaList = MutableLiveData<List<LoompaModel>>()
     val loompaList: LiveData<List<LoompaModel>> get() = _loompaList
+    private val _genderKeyList = MutableLiveData<List<String>>()
+    val genderKeyList: LiveData<List<String>> get() = _genderKeyList
+    private val _professionKeyList = MutableLiveData<List<String>>()
+    val professionKeyList: LiveData<List<String>> get() = _professionKeyList
     private val _currentPage = MutableLiveData<Int>().default(INITIAL_PAGE)
     val currentPage: LiveData<Int> get() = _currentPage
     private val _errorMessage = MutableLiveData<String>()
@@ -35,6 +39,12 @@ class LoompaListFragmentViewModel @Inject constructor(private val getAllLoompasU
     }
 
     private fun getLoompaList() {
+        fun getGenderKeys(loompaList: List<LoompaModel>): List<String> =
+            loompaList.distinctBy { it.gender }.map { it.gender }
+
+        fun getProfessionKeys(loompaList: List<LoompaModel>): List<String> =
+            loompaList.distinctBy { it.profession }.map { it.profession }
+
         //ToDo: Control errors.
         viewModelScope.launch {
             val result = if (_currentPage.value != null) {
@@ -42,8 +52,9 @@ class LoompaListFragmentViewModel @Inject constructor(private val getAllLoompasU
             } else {
                 getAllLoompasUseCase()
             }
-
             _loompaList.postValue(result.loompaList)
+            _genderKeyList.postValue(getGenderKeys(result.loompaList))
+            _professionKeyList.postValue(getProfessionKeys(result.loompaList))
         }
     }
 
@@ -66,5 +77,4 @@ class LoompaListFragmentViewModel @Inject constructor(private val getAllLoompasU
             }
         }
     }
-
 }
