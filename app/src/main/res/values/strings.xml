@@ -8,8 +8,18 @@
     <string name="last_page_warning">No more pages to show.</string>
     <string name="first_page_warning">You are already in first page.</string>
     <string name="loompa_think">%s thinks:</string>
+    <string name="gender">Gender</string>
     <string name="male_gender">Male</string>
     <string name="female_gender">Female</string>
     <string name="non_defined_gender">Non defined</string>
+    <string name="profession">Profession</string>
 
+
+    <string-array name="gender_string_array">
+        <item>@string/gender</item>
+    </string-array>
+
+    <string-array name="profession_string_array">
+        <item>@string/profession</item>
+    </string-array>
 </resources>

@@ -4,29 +4,27 @@ import com.aresudev.loompapp.core.error.LoompaNotFoundException
 
 abstract class BaseProvider<T>(private val memoryExpirationTime: Long? = null) {
 
-    var memoryData: T? = null
+    var memoryData: MutableList<T> = mutableListOf()
 
     private var lastUpdate: Long = 0
 
     open fun hasData(): Boolean =
         if (memoryExpirationTime != null) {
-            memoryData != null && System.currentTimeMillis() - lastUpdate < memoryExpirationTime
+            memoryData.isNotEmpty() && System.currentTimeMillis() - lastUpdate < memoryExpirationTime
         } else {
-            memoryData != null
+            memoryData.isNotEmpty()
         }
 
-    open fun getData(): T {
-        if (hasData()) return memoryData!! else throw LoompaNotFoundException(this::class.java.simpleName + "- getData()")
-    }
+    open fun getData(): MutableList<T> = if (hasData()) memoryData else mutableListOf()
 
     open fun saveData(data: T): T {
         lastUpdate = System.currentTimeMillis()
-        this.memoryData = data
+        this.memoryData.add(data)
         return data
     }
 
     open fun invalidateData() {
-        memoryData = null
+        memoryData =  mutableListOf()
         lastUpdate = 0
     }
 }
