@@ -51,8 +51,8 @@ class LoompaListFragment : BaseFragment() {
             professionKeyList.observe(viewLifecycleOwner) { professionKeys -> initProfessionFilters(professionKeys) }
             currentPage.observe(viewLifecycleOwner) { setPageNumber(it); loadScreen() }
             isScreenLoading.observe(viewLifecycleOwner) { isVisible -> viewBinding.gLoading.setLoadingVisibility(isVisible) }
-            alertMessage.observe(viewLifecycleOwner) { errorMessage -> requireActivity().showToast(errorMessage) }
-            errorMessage.observe(viewLifecycleOwner){DialogUtils.showWarningDialog(requireContext(),R.string.warning,it) {} }
+            alertMessage.observe(viewLifecycleOwner) { alertMessage -> requireActivity().showToast(alertMessage) }
+            errorMessage.observe(viewLifecycleOwner) { DialogUtils.showWarningDialog(requireContext(), R.string.warning, it) {} }
         }
     }
 
