@@ -13,6 +13,8 @@ import javax.inject.Inject
 @HiltViewModel
 class DetailFragmentViewModel @Inject constructor(private val getLoompaByIdUseCase: GetLoompaByIdUseCase) : ViewModel() {
 
+    private val _isScreenLoading = MutableLiveData<Boolean>()
+    val isScreenLoading: LiveData<Boolean> get() = _isScreenLoading
     private val _currentLoompa = MutableLiveData<LoompaModel>()
     val currentLoompa: LiveData<LoompaModel> get() = _currentLoompa
     private val _isFavoriteModeOn = MutableLiveData<Boolean>()
@@ -25,8 +27,10 @@ class DetailFragmentViewModel @Inject constructor(private val getLoompaByIdUseCa
 
     private fun getLoompaInfo(idLoompa: Int) {
         viewModelScope.launch {
+            _isScreenLoading.value = true
             val result = getLoompaByIdUseCase(idLoompa)
             _currentLoompa.postValue(result)
+            _isScreenLoading.value = false
         }
     }
 

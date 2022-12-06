@@ -34,7 +34,8 @@ class DetailFragment(private val idLoompa: Int) : BaseFragment() {
     override fun initViewModelObservers() {
         with(viewModel) {
             currentLoompa.observe(viewLifecycleOwner) { loompa -> loompa?.let { populateLoompaInfo(it) } }
-            isFavoriteModeOn.observe(viewLifecycleOwner) { isFavoriteModeOn -> changeFavoriteViews(isFavoriteModeOn)}
+            isFavoriteModeOn.observe(viewLifecycleOwner) { isFavoriteModeOn -> changeFavoriteViews(isFavoriteModeOn) }
+            isScreenLoading.observe(viewLifecycleOwner) { isVisible -> viewBinding.gLoading.setLoadingVisibility(isVisible) }
         }
     }
 
@@ -50,8 +51,8 @@ class DetailFragment(private val idLoompa: Int) : BaseFragment() {
         initViewModel()
     }
 
-    private fun initEvents(){
-        with(viewBinding){
+    private fun initEvents() {
+        with(viewBinding) {
             ivBackArrow.setOnClickListener { navigator.navigateToFilterFragment() }
             ivFavoriteStar.setOnClickListener { viewModel.changeFavoriteMode() }
         }
@@ -59,32 +60,35 @@ class DetailFragment(private val idLoompa: Int) : BaseFragment() {
 
     private fun populateLoompaInfo(loompa: LoompaModel) {
         val loompaFullName = loompa.firstName + " " + loompa.lastName
-        with(viewBinding){
-            FileManager.importImageFromUrl(requireContext(),loompa.image,ivMainImage)
+        with(viewBinding) {
+            FileManager.importImageFromUrl(requireContext(), loompa.image, ivMainImage)
             tvLoompaName.text = loompaFullName
             tvAge.text = loompa.age
             tvCountry.text = loompa.country
             tvEmail.text = loompa.email
             tvGender.text = GenderConverter.convertGenderByLetterValue(loompa.gender)
             tvProfession.text = loompa.profession
-            tvQuoteHeader.text = getAppString(R.string.loompa_think,loompaFullName)
+            tvQuoteHeader.text = getAppString(R.string.loompa_think, loompaFullName)
             tvQuote.text = loompa.quota
             tvDescription.text = loompa.description
             tvFavoriteColor.text = loompa.favorite.color
             tvFavoriteFood.text = loompa.favorite.food
             tvFavoriteSong.text = loompa.favorite.song
+            tvRandomString.text = loompa.favorite.randomString
         }
     }
 
     private fun changeFavoriteViews(favoriteModeOn: Boolean?) {
-        fun showFavoriteViews(){
-            with(viewBinding){
+        fun showFavoriteViews() {
+            with(viewBinding) {
                 ivColorIcon.visibility = View.VISIBLE
                 ivFoodIcon.visibility = View.VISIBLE
                 ivSongIcon.visibility = View.VISIBLE
+                ivRandomString.visibility = View.VISIBLE
                 tvFavoriteSong.visibility = View.VISIBLE
                 tvFavoriteFood.visibility = View.VISIBLE
                 tvFavoriteColor.visibility = View.VISIBLE
+                tvRandomString.visibility = View.VISIBLE
                 tvLoompaName.visibility = View.GONE
                 ivMainImage.visibility = View.GONE
                 ivBlur.visibility = View.GONE
@@ -92,25 +96,27 @@ class DetailFragment(private val idLoompa: Int) : BaseFragment() {
             }
         }
 
-        fun hideFavoriteViews(){
+        fun hideFavoriteViews() {
             with(viewBinding) {
                 ivColorIcon.visibility = View.GONE
                 ivFoodIcon.visibility = View.GONE
                 ivSongIcon.visibility = View.GONE
+                ivRandomString.visibility = View.GONE
                 tvFavoriteSong.visibility = View.GONE
                 tvFavoriteFood.visibility = View.GONE
                 tvFavoriteColor.visibility = View.GONE
+                tvRandomString.visibility = View.GONE
                 tvLoompaName.visibility = View.VISIBLE
                 ivMainImage.visibility = View.VISIBLE
                 ivBlur.visibility = View.VISIBLE
-                ivFavoriteStar.setImageDrawable(getAppDrawable(R.drawable.ic_star))
+                ivFavoriteStar.setImageDrawable(getAppDrawable(R.drawable.ic_info))
             }
         }
 
         favoriteModeOn?.let { isFavoriteModeOn ->
-            if(isFavoriteModeOn){
+            if (isFavoriteModeOn) {
                 showFavoriteViews()
-            }else{
+            } else {
                 hideFavoriteViews()
             }
         }
