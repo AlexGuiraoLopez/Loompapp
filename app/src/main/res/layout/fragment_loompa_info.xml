@@ -180,7 +180,7 @@
             android:layout_height="@dimen/tinny_image"
             android:layout_marginTop="@dimen/small_padding"
             android:layout_marginEnd="@dimen/tinny_padding"
-            android:src="@drawable/ic_star"
+            android:src="@drawable/ic_info"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -283,6 +283,16 @@
             tools:text="loompafernan@gmail.com" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <com.aresudev.loompapp.commons.ui.customview.LoadingCustomView
+        android:id="@+id/gLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/clLoompaInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cvQuote"
         style="@style/card_view"
@@ -323,9 +333,11 @@
                     android:layout_height="wrap_content"
                     tools:text="@tools:sample/lorem/random" />
             </ScrollView>
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     </com.google.android.material.card.MaterialCardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

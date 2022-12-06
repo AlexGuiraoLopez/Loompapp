@@ -49,6 +49,7 @@ class LoompaListFragment : BaseFragment() {
             genderKeyList.observe(viewLifecycleOwner) { genderKeys -> initGenderFilters(genderKeys) }
             professionKeyList.observe(viewLifecycleOwner) { professionKeys -> initProfessionFilters(professionKeys) }
             currentPage.observe(viewLifecycleOwner) { setPageNumber(it); loadScreen() }
+            isScreenLoading.observe(viewLifecycleOwner) { isVisible -> viewBinding.gLoading.setLoadingVisibility(isVisible) }
             errorMessage.observe(viewLifecycleOwner) { errorMessage -> requireActivity().showToast(errorMessage) }
         }
     }

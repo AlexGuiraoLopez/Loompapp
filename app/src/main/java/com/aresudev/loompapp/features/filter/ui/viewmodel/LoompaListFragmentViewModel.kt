@@ -25,6 +25,8 @@ class LoompaListFragmentViewModel @Inject constructor(
         private const val LAST_PAGE = 20
     }
 
+    private val _isScreenLoading = MutableLiveData<Boolean>()
+    val isScreenLoading: LiveData<Boolean> get() = _isScreenLoading
     private val _loompaList = MutableLiveData<List<LoompaModel>>()
     val loompaList: LiveData<List<LoompaModel>> get() = _loompaList
     private val _genderKeyList = MutableLiveData<List<String>>()
@@ -51,6 +53,7 @@ class LoompaListFragmentViewModel @Inject constructor(
 
         //ToDo: Control errors.
         viewModelScope.launch {
+            _isScreenLoading.value = true
             val result = if (_currentPage.value != null) {
                 getAllLoompasUseCase(_currentPage.value!!)
             } else {
@@ -59,6 +62,7 @@ class LoompaListFragmentViewModel @Inject constructor(
             _loompaList.postValue(result.loompaList)
             _genderKeyList.postValue(getGenderKeys(result.loompaList))
             _professionKeyList.postValue(getProfessionKeys(result.loompaList))
+            _isScreenLoading.value = false
         }
     }
 
@@ -85,6 +89,7 @@ class LoompaListFragmentViewModel @Inject constructor(
     fun filterLoompas() {
         _currentPage.value?.let { currentPage ->
             viewModelScope.launch {
+                _isScreenLoading.value = true
                 val result =
                     filterLoompaUseCase(
                         page = currentPage,
@@ -92,6 +97,7 @@ class LoompaListFragmentViewModel @Inject constructor(
                         profession = professionFilter
                     )
                 _loompaList.postValue(result)
+                _isScreenLoading.value = false
             }
         }
     }
