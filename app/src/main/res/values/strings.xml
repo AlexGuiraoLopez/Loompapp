@@ -3,6 +3,7 @@
 
     <string name="accept">Accept</string>
     <string name="cancel">Cancel</string>
+    <string name="warning">Warning</string>
     <string name="next_page">Next page</string>
     <string name="page">Page</string>
     <string name="last_page_warning">No more pages to show.</string>
@@ -13,6 +14,14 @@
     <string name="female_gender">Female</string>
     <string name="non_defined_gender">Non defined</string>
     <string name="profession">Profession</string>
+    <string name="made_for_napptilus">Made for Napptilus Tech Labs </string>
+
+
+    <!--Exceptions-->
+    <string name="socket_timeout_exception">There was a problem with your connection.</string>
+    <string name="loompa_not_found_exception">The Loompa might be hide somewhere. We didn\'t found him.</string>
+    <string name="unknown_host_exception">Server cannot be reached. Have you activated your phone\'s connection?</string>
+    <string name="generic_exception">Oh no! Something worng happened. Please try again</string>
 
 
     <string-array name="gender_string_array">

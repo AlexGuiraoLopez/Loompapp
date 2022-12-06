@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.aresudev.loompapp.commons.business.usecase.GetLoompaByIdUseCase
 import com.aresudev.loompapp.commons.data.model.LoompaModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -28,8 +29,8 @@ class DetailFragmentViewModel @Inject constructor(private val getLoompaByIdUseCa
     private fun getLoompaInfo(idLoompa: Int) {
         viewModelScope.launch {
             _isScreenLoading.value = true
-            val result = getLoompaByIdUseCase(idLoompa)
-            _currentLoompa.postValue(result)
+            val result = async { getLoompaByIdUseCase(idLoompa) }
+            _currentLoompa.postValue(result.await())
             _isScreenLoading.value = false
         }
     }
