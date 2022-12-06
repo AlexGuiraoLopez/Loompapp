@@ -13,6 +13,7 @@ import com.aresudev.loompapp.core.extensions.getAppDrawable
 import com.aresudev.loompapp.core.extensions.getAppString
 import com.aresudev.loompapp.core.utils.GenderConverter
 import com.aresudev.loompapp.core.utils.filemanagement.FileManager
+import com.aresudev.loompapp.core.utils.ui.dialog.DialogUtils
 import com.aresudev.loompapp.databinding.FragmentLoompaInfoBinding
 import com.aresudev.loompapp.features.filter.ui.viewmodel.DetailFragmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,6 +37,7 @@ class DetailFragment(private val idLoompa: Int) : BaseFragment() {
             currentLoompa.observe(viewLifecycleOwner) { loompa -> loompa?.let { populateLoompaInfo(it) } }
             isFavoriteModeOn.observe(viewLifecycleOwner) { isFavoriteModeOn -> changeFavoriteViews(isFavoriteModeOn) }
             isScreenLoading.observe(viewLifecycleOwner) { isVisible -> viewBinding.gLoading.setLoadingVisibility(isVisible) }
+            errorMessage.observe(viewLifecycleOwner){ DialogUtils.showWarningDialog(requireContext(), R.string.warning, it) {} }
         }
     }
 

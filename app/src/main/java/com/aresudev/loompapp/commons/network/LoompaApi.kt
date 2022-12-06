@@ -8,6 +8,7 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface LoompaApi {
+
     @GET("oompa-loompas")
     suspend fun getLoompas(@Query("page") page: Int? = 1): Response<LoompaPageModel>
 

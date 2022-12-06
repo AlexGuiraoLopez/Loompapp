@@ -15,6 +15,7 @@ import com.aresudev.loompapp.databinding.FragmentLoompaListBinding
 import com.aresudev.loompapp.commons.ui.base.BaseFragment
 import com.aresudev.loompapp.core.extensions.showToast
 import com.aresudev.loompapp.core.utils.ui.Space
+import com.aresudev.loompapp.core.utils.ui.dialog.DialogUtils
 import com.aresudev.loompapp.features.filter.ui.adapter.LoompaRvAdapter
 import com.aresudev.loompapp.features.filter.ui.viewmodel.LoompaListFragmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -50,7 +51,8 @@ class LoompaListFragment : BaseFragment() {
             professionKeyList.observe(viewLifecycleOwner) { professionKeys -> initProfessionFilters(professionKeys) }
             currentPage.observe(viewLifecycleOwner) { setPageNumber(it); loadScreen() }
             isScreenLoading.observe(viewLifecycleOwner) { isVisible -> viewBinding.gLoading.setLoadingVisibility(isVisible) }
-            errorMessage.observe(viewLifecycleOwner) { errorMessage -> requireActivity().showToast(errorMessage) }
+            alertMessage.observe(viewLifecycleOwner) { alertMessage -> requireActivity().showToast(alertMessage) }
+            errorMessage.observe(viewLifecycleOwner) { DialogUtils.showWarningDialog(requireContext(), R.string.warning, it) {} }
         }
     }
 

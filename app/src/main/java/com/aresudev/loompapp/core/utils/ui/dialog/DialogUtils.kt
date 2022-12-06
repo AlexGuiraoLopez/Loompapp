@@ -25,6 +25,21 @@ object DialogUtils {
     fun showWarningDialog(
         context: Context,
         dialogTitleResourceId: Int,
+        dialogDescriptionMessage: String? = null,
+        positiveButtonTitleResourceId: Int = R.string.accept,
+        positiveButtonOnClickListener: () -> Unit
+    ) {
+        AlertDialogCustomView(context).apply {
+            setTitle(getAppString(dialogTitleResourceId))
+            dialogDescriptionMessage?.let { setDescription(dialogDescriptionMessage)}
+            addButton(getAppString(positiveButtonTitleResourceId)) { positiveButtonOnClickListener(); dismiss() }
+            show()
+        }
+    }
+
+    fun showWarningDialog(
+        context: Context,
+        dialogTitleResourceId: Int,
         dialogDescriptionResourceId: Int? = null,
         positiveButtonTitleResourceId: Int = R.string.accept,
         positiveButtonOnClickListener: () -> Unit,

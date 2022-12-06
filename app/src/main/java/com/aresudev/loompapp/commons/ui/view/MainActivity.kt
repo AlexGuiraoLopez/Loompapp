@@ -39,4 +39,11 @@ class MainActivity : AppCompatActivity(), FragmentNavigator {
         fDetail.navigator = this
         supportFragmentManager.changeCurrentFragment(R.id.fcvMainFragmentContainer, fDetail)
     }
+
+    override fun onBackPressed() {
+        when (supportFragmentManager.fragments.last()) {
+            is DetailFragment -> fLoompaList?.let { supportFragmentManager.changeCurrentFragment(R.id.fcvMainFragmentContainer, it) }
+            else -> super.onBackPressed()
+        }
+    }
 }

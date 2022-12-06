@@ -34,7 +34,6 @@ class AlertDialogCustomView(context: Context) : Dialog(context) {
         viewBinding.tvAlertDescription.text = description
     }
 
-    //ToDo: Añadir color dinámico a los botones.
     fun addButton(label: String, onClickListener: Dialog.() -> Unit) = apply { this.dialogButtons.add(Pair(label,onClickListener)) }
 
     override fun show() {
