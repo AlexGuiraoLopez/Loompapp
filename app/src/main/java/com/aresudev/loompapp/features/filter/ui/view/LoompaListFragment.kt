@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,6 +25,8 @@ class LoompaListFragment : BaseFragment() {
 
     companion object {
         private const val RV_ITEM_SEPARATION = 10
+        private const val SPINNER_ACTIVE_ALPHA = 1f
+        private const val SPINNER_INACTIVE_ALPHA = .4f
     }
 
     private var _viewBinding: FragmentLoompaListBinding? = null
@@ -106,6 +109,35 @@ class LoompaListFragment : BaseFragment() {
             }
             ivPreviousPage.setOnClickListener {
                 viewModel.previousPage()
+            }
+            spnFilterProfession.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, spinnerPosition: Int, p3: Long) {
+                    if (spinnerPosition != 0) {
+                        viewModel.professionFilter = spnFilterProfession.selectedItem.toString()
+                        spnFilterProfession.alpha = SPINNER_ACTIVE_ALPHA
+                    } else {
+                        viewModel.professionFilter = null
+                        spnFilterProfession.alpha = SPINNER_INACTIVE_ALPHA
+                    }
+                    viewModel.filterLoompas()
+                }
+
+                override fun onNothingSelected(p0: AdapterView<*>?) {}
+            }
+
+            spnFilterGender.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, spinnerPosition: Int, p3: Long) {
+                    if (spinnerPosition != 0) {
+                        viewModel.genderFilter = spnFilterGender.selectedItem.toString()
+                        spnFilterGender.alpha = SPINNER_ACTIVE_ALPHA
+                    } else {
+                        viewModel.genderFilter = null
+                        spnFilterGender.alpha = SPINNER_INACTIVE_ALPHA
+                    }
+                    viewModel.filterLoompas()
+                }
+
+                override fun onNothingSelected(p0: AdapterView<*>?) {}
             }
         }
     }

@@ -38,6 +38,5 @@ class DetailFragmentViewModel @Inject constructor(private val getLoompaByIdUseCa
                 _isFavoriteModeOn.postValue(true)
             }
         } ?: _isFavoriteModeOn.postValue(true)
-
     }
 }
