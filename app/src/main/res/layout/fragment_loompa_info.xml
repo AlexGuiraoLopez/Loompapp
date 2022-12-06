@@ -169,6 +169,36 @@
                     tools:text="Lalalalala"
                     tools:visibility="visible" />
 
+                <!--Song-->
+                <ImageView
+                    android:id="@+id/ivRandomString"
+                    android:layout_width="@dimen/smallest_image"
+                    android:layout_height="@dimen/smallest_image"
+                    android:layout_marginStart="@dimen/small_padding"
+                    android:layout_marginTop="@dimen/tinny_padding"
+                    android:src="@drawable/ic_random_string"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivSongIcon"
+                    tools:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/tvRandomString"
+                    style="@style/tv_h5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/tinny_padding"
+                    android:layout_marginEnd="@dimen/tinny_padding"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivRandomString"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ivRandomString"
+                    app:layout_constraintTop_toTopOf="@+id/ivRandomString"
+                    tools:text="This is my random string."
+                    tools:visibility="visible" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -291,8 +321,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/clLoompaInfo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible" />
+        app:layout_constraintTop_toTopOf="parent" />
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cvQuote"
         style="@style/card_view"

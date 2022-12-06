@@ -74,6 +74,7 @@ class DetailFragment(private val idLoompa: Int) : BaseFragment() {
             tvFavoriteColor.text = loompa.favorite.color
             tvFavoriteFood.text = loompa.favorite.food
             tvFavoriteSong.text = loompa.favorite.song
+            tvRandomString.text = loompa.favorite.randomString
         }
     }
 
@@ -83,9 +84,11 @@ class DetailFragment(private val idLoompa: Int) : BaseFragment() {
                 ivColorIcon.visibility = View.VISIBLE
                 ivFoodIcon.visibility = View.VISIBLE
                 ivSongIcon.visibility = View.VISIBLE
+                ivRandomString.visibility = View.VISIBLE
                 tvFavoriteSong.visibility = View.VISIBLE
                 tvFavoriteFood.visibility = View.VISIBLE
                 tvFavoriteColor.visibility = View.VISIBLE
+                tvRandomString.visibility = View.VISIBLE
                 tvLoompaName.visibility = View.GONE
                 ivMainImage.visibility = View.GONE
                 ivBlur.visibility = View.GONE
@@ -98,9 +101,11 @@ class DetailFragment(private val idLoompa: Int) : BaseFragment() {
                 ivColorIcon.visibility = View.GONE
                 ivFoodIcon.visibility = View.GONE
                 ivSongIcon.visibility = View.GONE
+                ivRandomString.visibility = View.GONE
                 tvFavoriteSong.visibility = View.GONE
                 tvFavoriteFood.visibility = View.GONE
                 tvFavoriteColor.visibility = View.GONE
+                tvRandomString.visibility = View.GONE
                 tvLoompaName.visibility = View.VISIBLE
                 ivMainImage.visibility = View.VISIBLE
                 ivBlur.visibility = View.VISIBLE
