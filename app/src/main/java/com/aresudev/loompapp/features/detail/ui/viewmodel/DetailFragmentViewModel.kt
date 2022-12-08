@@ -1,4 +1,4 @@
-package com.aresudev.loompapp.features.filter.ui.viewmodel
+package com.aresudev.loompapp.features.detail.ui.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -21,13 +21,13 @@ class DetailFragmentViewModel @Inject constructor(private val getLoompaByIdUseCa
     val isScreenLoading: LiveData<Boolean> get() = _isScreenLoading
     private val _currentLoompa = MutableLiveData<LoompaModel>()
     val currentLoompa: LiveData<LoompaModel> get() = _currentLoompa
-    private val _isFavoriteModeOn = MutableLiveData<Boolean>()
-    val isFavoriteModeOn: LiveData<Boolean> get() = _isFavoriteModeOn
+    private val _isFavoriteModeActive = MutableLiveData<Boolean>()
+    val isFavoriteModeActive: LiveData<Boolean> get() = _isFavoriteModeActive
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> get() = _errorMessage
 
     fun loadScreen(idLoompa: Int) {
-        _isFavoriteModeOn.postValue(false)
+        _isFavoriteModeActive.postValue(false)
         getLoompaInfo(idLoompa)
     }
 
@@ -53,12 +53,12 @@ class DetailFragmentViewModel @Inject constructor(private val getLoompaByIdUseCa
     }
 
     fun changeFavoriteMode() {
-        _isFavoriteModeOn.value?.let { inFavoriteMode ->
+        _isFavoriteModeActive.value?.let { inFavoriteMode ->
             if (inFavoriteMode) {
-                _isFavoriteModeOn.postValue(false)
+                _isFavoriteModeActive.postValue(false)
             } else {
-                _isFavoriteModeOn.postValue(true)
+                _isFavoriteModeActive.postValue(true)
             }
-        } ?: _isFavoriteModeOn.postValue(true)
+        } ?: _isFavoriteModeActive.postValue(true)
     }
 }

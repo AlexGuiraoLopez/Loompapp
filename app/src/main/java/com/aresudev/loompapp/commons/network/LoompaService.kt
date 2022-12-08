@@ -4,13 +4,9 @@ import com.aresudev.loompapp.commons.data.model.LoompaModel
 import com.aresudev.loompapp.commons.data.model.LoompaPageModel
 import com.aresudev.loompapp.core.error.LoompaNotFoundException
 import com.aresudev.loompapp.core.utils.Resource
-import kotlinx.coroutines.Delay
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
-import java.net.SocketTimeoutException
 import javax.inject.Inject
-import kotlin.jvm.Throws
 
 class LoompaService @Inject constructor(private val api: LoompaApi) {
 

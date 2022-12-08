@@ -6,7 +6,7 @@ import com.aresudev.loompapp.R
 import com.aresudev.loompapp.databinding.ActivityMainBinding
 import com.aresudev.loompapp.commons.callbacks.FragmentNavigator
 import com.aresudev.loompapp.core.extensions.changeCurrentFragment
-import com.aresudev.loompapp.features.filter.ui.view.DetailFragment
+import com.aresudev.loompapp.features.detail.ui.view.DetailFragment
 import com.aresudev.loompapp.features.filter.ui.view.LoompaListFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity(), FragmentNavigator {
 
     override fun onBackPressed() {
         when (supportFragmentManager.fragments.last()) {
-            is DetailFragment -> fLoompaList?.let { supportFragmentManager.changeCurrentFragment(R.id.fcvMainFragmentContainer, it) }
+            is DetailFragment -> fLoompaList.let { supportFragmentManager.changeCurrentFragment(R.id.fcvMainFragmentContainer, it) }
             else -> super.onBackPressed()
         }
     }

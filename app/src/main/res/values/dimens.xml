@@ -45,6 +45,9 @@
     <dimen name="medium_edit_text_width">300dp</dimen>
     <dimen name="big_edit_text_width">450dp</dimen>
 
+    <!--Dimensiones para los Spinner-->
+    <dimen name="medium_spinner_width">170dp</dimen>
+    <dimen name="medium_spinner_height">30dp</dimen>
 
     <dimen name="big_button_width">570dp</dimen>
     <dimen name="big_button_height">98dp</dimen>

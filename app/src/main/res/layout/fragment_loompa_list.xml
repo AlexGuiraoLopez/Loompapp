@@ -19,8 +19,8 @@
 
         <Spinner
             android:id="@+id/spnFilterProfession"
-            android:layout_width="170dp"
-            android:layout_height="30dp"
+            android:layout_width="@dimen/medium_spinner_width"
+            android:layout_height="@dimen/medium_spinner_height"
             android:background="@drawable/spn_container"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/spnFilterGender"
@@ -28,12 +28,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginStart="@dimen/small_padding"
-            android:alpha="0.5"/>
+            tools:alpha="0.4"/>
 
         <Spinner
             android:id="@+id/spnFilterGender"
-            android:layout_width="170dp"
-            android:layout_height="30dp"
+            android:layout_width="@dimen/medium_spinner_width"
+            android:layout_height="@dimen/medium_spinner_height"
             android:background="@drawable/spn_container"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -41,13 +41,14 @@
             app:layout_constraintStart_toEndOf="@+id/spnFilterProfession"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginEnd="@dimen/small_padding"
-            android:alpha="0.5"/>
+            tools:alpha="0.4"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvLoompaList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:requiresFadingEdge="vertical"
         app:layout_constraintBottom_toTopOf="@+id/vSeparatorTop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
