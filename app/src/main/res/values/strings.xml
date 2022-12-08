@@ -1,3 +1,34 @@
 <resources>
-    <string name="app_name">Loompaap</string>
+    <string name="app_name">Loompapp</string>
+
+    <string name="accept">Accept</string>
+    <string name="cancel">Cancel</string>
+    <string name="warning">Warning</string>
+    <string name="next_page">Next page</string>
+    <string name="page">Page</string>
+    <string name="last_page_warning">No more pages to show.</string>
+    <string name="first_page_warning">You are already in first page.</string>
+    <string name="loompa_think">%s thinks:</string>
+    <string name="gender">Gender</string>
+    <string name="male_gender">Male</string>
+    <string name="female_gender">Female</string>
+    <string name="non_defined_gender">Non defined</string>
+    <string name="profession">Profession</string>
+    <string name="made_for_napptilus">Made for Napptilus Tech Labs </string>
+
+
+    <!--Exceptions-->
+    <string name="socket_timeout_exception">There was a problem with your connection.</string>
+    <string name="loompa_not_found_exception">The Loompa might be hide somewhere. We didn\'t found him.</string>
+    <string name="unknown_host_exception">Server cannot be reached. Have you activated your phone\'s connection?</string>
+    <string name="generic_exception">Oh no! Something worng happened. Please try again</string>
+
+
+    <string-array name="gender_string_array">
+        <item>@string/gender</item>
+    </string-array>
+
+    <string-array name="profession_string_array">
+        <item>@string/profession</item>
+    </string-array>
 </resources>
