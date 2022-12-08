@@ -6,15 +6,22 @@ import javax.inject.Inject
 
 class FilterLoompaUseCase @Inject constructor(private val getAllLoompasUseCase: GetAllLoompasUseCase) {
 
+    companion object {
+        const val GENERIC_FILTER_ERROR = "An error ocurred while filter loompa list."
+    }
+
     suspend operator fun invoke(page: Int, profession: String?, gender: String?): Resource<List<LoompaModel>> {
-        val loompaPage = getAllLoompasUseCase(page).data
-        val filteredResponse = if (loompaPage != null) {
-            Resource.Success(loompaPage.loompaList.filterGender(gender).filterProfession(profession))
+
+        val loompaPage = getAllLoompasUseCase(page)
+        val filteredResponse = if (loompaPage.data != null) {
+            Resource.Success(loompaPage.data.loompaList.filterGender(gender).filterProfession(profession))
         } else {
-            Resource.Error("No filters") //ToDo: Handle message constant.
+            loompaPage.errorMessage?.let { Resource.Error(it) } ?: Resource.Error(GENERIC_FILTER_ERROR)
         }
+
         return filteredResponse
     }
+
     private fun List<LoompaModel>.filterGender(gender: String?) =
         gender?.let { filter { it.gender == gender } } ?: this
 

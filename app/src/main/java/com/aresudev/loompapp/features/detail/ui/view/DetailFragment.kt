@@ -1,4 +1,4 @@
-package com.aresudev.loompapp.features.filter.ui.view
+package com.aresudev.loompapp.features.detail.ui.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,7 +15,7 @@ import com.aresudev.loompapp.core.utils.GenderConverter
 import com.aresudev.loompapp.core.utils.filemanagement.FileManager
 import com.aresudev.loompapp.core.utils.ui.dialog.DialogUtils
 import com.aresudev.loompapp.databinding.FragmentLoompaInfoBinding
-import com.aresudev.loompapp.features.filter.ui.viewmodel.DetailFragmentViewModel
+import com.aresudev.loompapp.features.detail.ui.viewmodel.DetailFragmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -35,9 +35,9 @@ class DetailFragment(private val idLoompa: Int) : BaseFragment() {
     override fun initViewModelObservers() {
         with(viewModel) {
             currentLoompa.observe(viewLifecycleOwner) { loompa -> loompa?.let { populateLoompaInfo(it) } }
-            isFavoriteModeOn.observe(viewLifecycleOwner) { isFavoriteModeOn -> changeFavoriteViews(isFavoriteModeOn) }
-            isScreenLoading.observe(viewLifecycleOwner) { isVisible -> viewBinding.gLoading.setLoadingVisibility(isVisible) }
-            errorMessage.observe(viewLifecycleOwner){ DialogUtils.showWarningDialog(requireContext(), R.string.warning, it) {} }
+            isFavoriteModeActive.observe(viewLifecycleOwner) { isFavoriteModeOn -> changeFavoriteViews(isFavoriteModeOn) }
+            isScreenLoading.observe(viewLifecycleOwner) { isVisible -> showLoadViewIfIsLoading(isVisible, viewBinding.gLoading) }
+            errorMessage.observe(viewLifecycleOwner) { DialogUtils.showWarningDialog(requireContext(), R.string.warning, it) {} }
         }
     }
 
@@ -56,7 +56,7 @@ class DetailFragment(private val idLoompa: Int) : BaseFragment() {
     private fun initEvents() {
         with(viewBinding) {
             ivBackArrow.setOnClickListener { navigator.navigateToFilterFragment() }
-            ivFavoriteStar.setOnClickListener { viewModel.changeFavoriteMode() }
+            ivInfoIcon.setOnClickListener { viewModel.changeFavoriteMode() }
         }
     }
 
@@ -94,7 +94,7 @@ class DetailFragment(private val idLoompa: Int) : BaseFragment() {
                 tvLoompaName.visibility = View.GONE
                 ivMainImage.visibility = View.GONE
                 ivBlur.visibility = View.GONE
-                ivFavoriteStar.setImageDrawable(getAppDrawable(R.drawable.ic_close))
+                ivInfoIcon.setImageDrawable(getAppDrawable(R.drawable.ic_close))
             }
         }
 
@@ -111,7 +111,7 @@ class DetailFragment(private val idLoompa: Int) : BaseFragment() {
                 tvLoompaName.visibility = View.VISIBLE
                 ivMainImage.visibility = View.VISIBLE
                 ivBlur.visibility = View.VISIBLE
-                ivFavoriteStar.setImageDrawable(getAppDrawable(R.drawable.ic_info))
+                ivInfoIcon.setImageDrawable(getAppDrawable(R.drawable.ic_info))
             }
         }
 

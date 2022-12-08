@@ -95,4 +95,20 @@ class FilterLoompaUseCaseTest {
             assert(opositeGenderItems?.size == 0)
         }
 
+    @Test
+    fun `GIVEN an error WHEN receiving loompa list to filter THEN return resource error `() =
+        runBlocking {
+            //Given
+            val page = 1
+            val genderFilter = "m"
+            val professionFilter = "developer"
+            val testErrorMessage = "Test error"
+            coEvery { getAllLoompasUseCase(page) } returns Resource.Error(testErrorMessage)
+
+            //When
+            val result = filterLoompaUseCase(page, gender = genderFilter, profession = professionFilter)
+
+            //Then
+            assert(result.errorMessage == testErrorMessage)
+        }
 }

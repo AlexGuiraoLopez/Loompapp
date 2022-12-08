@@ -1,7 +1,5 @@
 package com.aresudev.loompapp.core.base
 
-import com.aresudev.loompapp.core.error.LoompaNotFoundException
-
 abstract class BaseProvider<T>(private val memoryExpirationTime: Long? = null) {
 
     var memoryData: MutableList<T> = mutableListOf()

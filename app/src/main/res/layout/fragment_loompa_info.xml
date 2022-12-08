@@ -30,7 +30,7 @@
             android:layout_width="@dimen/medium_image"
             android:layout_height="@dimen/medium_image"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/ivFavoriteStar"
+            app:layout_constraintEnd_toStartOf="@+id/ivInfoIcon"
             app:layout_constraintStart_toEndOf="@+id/ivBackArrow"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -205,7 +205,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <ImageView
-            android:id="@+id/ivFavoriteStar"
+            android:id="@+id/ivInfoIcon"
             android:layout_width="@dimen/tinny_image"
             android:layout_height="@dimen/tinny_image"
             android:layout_marginTop="@dimen/small_padding"
@@ -286,6 +286,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/small_padding"
+            android:layout_marginStart="@dimen/small_padding"
+            android:layout_marginEnd="@dimen/small_padding"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -322,11 +324,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cvQuote"
         style="@style/card_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginStart="@dimen/small_padding"
+        android:layout_marginEnd="@dimen/small_padding"
+        android:layout_marginBottom="@dimen/small_padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -351,7 +357,6 @@
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:layout_marginTop="@dimen/tinny_padding"
                 app:layout_constraintTop_toBottomOf="@+id/tvQuoteHeader">
 
@@ -367,6 +372,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

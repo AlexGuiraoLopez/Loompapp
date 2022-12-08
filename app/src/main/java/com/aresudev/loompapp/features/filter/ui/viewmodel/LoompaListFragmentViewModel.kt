@@ -8,6 +8,7 @@ import com.aresudev.loompapp.R
 import com.aresudev.loompapp.commons.business.usecase.FilterLoompaUseCase
 import com.aresudev.loompapp.commons.business.usecase.GetAllLoompasUseCase
 import com.aresudev.loompapp.commons.data.model.LoompaModel
+import com.aresudev.loompapp.core.error.ExceptionHandler
 import com.aresudev.loompapp.core.extensions.default
 import com.aresudev.loompapp.core.extensions.getAppString
 import com.aresudev.loompapp.core.utils.Resource
@@ -78,8 +79,8 @@ class LoompaListFragmentViewModel @Inject constructor(
                         result.await().errorMessage?.let { _errorMessage.postValue(it) }
                     }
                 }
-            } catch (e: Exception) {
-
+            } catch (ex: Exception) {
+                _errorMessage.postValue(ExceptionHandler.sendExceptionFeedbackMessage(ex))
             } finally {
                 _isScreenLoading.value = false
             }
